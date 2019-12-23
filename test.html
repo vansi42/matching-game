@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>test for card animation</title>
+        <style>
+            .memoryCard {
+                width: 110px;
+                height: 150px;
+                position: relative;
+                cursor: pointer;
+                transition: all 1.3s ease-in-out;
+                top: 100px;
+                left: 100px;
+            }
+            img {
+                width: 110px;
+                height: 150px;
+            }
+            .front, .back {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                transition: all 0.5s ease-in-out;
+            }
+            .back {
+                border: 2px solid red;
+                background-color: blue;
+                top: 0;
+                left: 0;
+            }
+            .front {
+                top: 0;
+                left: 0;
+                transform: translateY(100%) rotateX(90deg) ;
+                border: 1px solid red;
+            }
+            
+            .memoryCard[flipped=true] {
+                transform: scaleX(1.3) scaleY(1.3);
+            }
+            .memoryCard[flipped=true] .back{
+                transform: translateY(100%) rotateX(90deg) ;
+            }
+            .memoryCard[flipped=true] .front {
+                transition-delay: 0.5s;
+                transform: rotateX(0deg) translateY(0) ;
+            }
+        
+        </style>
+        <script>
+            var flipCard = function (el) {
+                if (el.hasAttribute("flipped")) {
+                    el.removeAttribute("flipped");
+                } else {
+                    el.setAttribute("flipped", "true");
+                }
+                //el.classList.add("isFlipped");
+            };
+        </script>
+    </head>
+    <body>
+        <div class="memoryCard" onclick="flipCard(this);">
+            <div class="back"></div>        
+            <div class="front">
+                <img src="./images/1.png">
+            </div>        
+        </div>
+    </body>
+</html>

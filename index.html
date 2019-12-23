@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet" type="text/css">
+
+<html>
+    <head>
+        <title>Stiiiiimpyyyy</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+
+        <style>         
+            .back {
+                background-image: url("./images/bg.jfif");
+                background-size: 50px;
+            }
+            #hooray {
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color:#fff;
+                width: 100%;
+                height: 100%;
+                z-index: 10;
+                opacity: 0.7;
+                display: none;
+            }
+        </style>
+        <script src="script.js"></script>
+    </head>
+    <body onload="init();">
+        <h1>Look, Ren! A murmury game!</h1>
+        <div id="memoryGame">            
+            <div id="menu">
+                <div>Moves: <span id="moves">0</span></div>
+                <button onclick="reset();">
+                    <img class="reset" src="./images/undo.png">
+                </button>
+            </div>
+            <div id="board"></div>            
+        </div>
+        <div id="hooray">
+            
+        </div>
+        <footer>
+            created by vansi42 | Chingu | 2019
+        </footer>
+    </body>
+</html>

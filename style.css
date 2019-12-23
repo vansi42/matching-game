@@ -1,0 +1,144 @@
+* {
+    font-family: shadows into light;
+    text-align: center;
+    margin: 0;
+
+}
+
+html, body {
+    height: 100%;
+    position: relative;
+}
+
+h1 {
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+
+#memoryGame {
+    display: flex;
+    /*justify-content: center;*/
+    flex-direction: column;
+    /* height: -webkit-fill-available; */
+    overflow: hidden;
+    width: 100%;
+    height: calc(100% - 5rem);
+}
+
+#board {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    /* width: 70%;  */
+    /*height: 500px;*/
+    height: calc(100% - 8rem);
+}
+
+.memoryCard {
+    transition: all 0s;
+    /*width: 22%;
+    border: 5px solid #fff;
+    height: 22%;*/
+    position: relative;
+    border-radius: 5px;
+    flex-basis: calc(25% - 20px);
+    margin: 10px;
+    box-shadow: 5px 5px #aaa;
+    background-color: #ddd;
+
+}
+.memoryCard img {
+    border-radius: 5px;
+    max-width: 100%;
+    max-height: 100%;
+}
+.front, .back {
+    width: calc(100% - 5px);
+    height: calc(100% - 5px);
+    position: absolute;
+    transition: transform 0.5s ease-in-out;
+    border-radius: 5px;
+    text-align: center;
+}
+.back {
+    top: -5px;
+    left: -5px;
+    cursor: pointer;
+    z-index: 0;
+    transform:  translateY(0) rotateX(0);
+    transition-delay: 0.5s;
+    border: 5px solid transparent;
+}
+.front {
+    top: -5px;
+    left: -5px;
+    transform: translateY(100%) rotateX(90deg) ;
+    z-index: 1;
+    background-color: red;
+    border: 5px solid transparent;
+    max-width: 100%;
+    max-height: 100%;
+
+}
+
+.memoryCard[chosen=true][flipped=true] {
+    background-image: none;
+    transition-delay: 0.3s;
+}
+.memoryCard[flipped=true] .back{
+    transform:  translateY(100%) rotateX(-90deg);
+    z-index: 2;
+    border: 5px solid transparent;
+}
+
+.memoryCard[flipped=true] .front {
+    transition-delay: 0.8s;
+    z-index: 2;
+    transform: scale(1.3) translateY(0)  rotateX(0deg);
+    border: 5px solid transparent;
+}
+
+.memoryCard[chosen=true] .back{
+    border: 5px solid gold;
+
+}
+
+ .memoryCard[success=true] .front {
+    transform: scale(1);  
+    border: 5px solid transparent;
+    z-index: 0;
+}
+
+#menu {
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+}
+button {
+    color: #000000;
+    cursor: pointer;
+    border: none;
+    background: transparent;    
+    outline: 0;
+    padding: 5px;
+    width:1.5rem;
+    height: 1.5rem;
+}
+button:hover {
+    border: 1px solid gold;
+    border-radius: 50%;
+}
+
+.reset {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+footer {
+    font-size: 1rem;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
