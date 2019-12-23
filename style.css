@@ -206,15 +206,29 @@ footer a:hover {
         height: calc(100% - 5rem);
    }    
    h1 {
-       font-size: 2rem;
+       font-size: 1.5rem;
    }
+   
+}
 
+@media (max-height: 450px) {
+    #board {
+        width: 90%;
+        height: 100%;
+    }
+    #menu {
+        display: none;
+    }
+ 
+    footer {
+        display: none;
+    }
 }
 
 @media (min-width: 750px)  {
     #board {
         width: 750px;
-        height: calc(100% - 4.5rem);
+        /*height: calc(100% - 4.5rem);*/
     }
     h1 {
         font-size: 2.5rem;
