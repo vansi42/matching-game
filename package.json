@@ -1,0 +1,23 @@
+{
+  "name": "matching-game",
+  "version": "1.0.0",
+  "description": "a Ren & Stimpy themed matching game",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vansi42/matching-game.git"
+  },
+  "author": "vansi42",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vansi42/matching-game/issues"
+  },
+  "homepage": "https://github.com/vansi42/matching-game#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "request": "^2.88.0"
+  }
+}
