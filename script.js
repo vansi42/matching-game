@@ -56,6 +56,8 @@ var reset = function () {
     }    
     clearInterval(timer);
     timer = 0;
+    document.getElementById("hooray").setAttribute("isHidden", "true");
+
     lock = false;
 }
 
@@ -81,7 +83,7 @@ var checkIfPair = function() {
         document.getElementById("card-"+testPair[1]).setAttribute("success", "true");
         totalCardsFlipped += 2;
         if (totalCardsFlipped == totalCards) {
-            alert("woohoo!!!")
+            document.getElementById("hooray").setAttribute("isHidden", "false");
         }
     } else {
         document.getElementById("card-"+testPair[0]).setAttribute("chosen", "false");
@@ -158,5 +160,4 @@ var setTime = function () {
     }
     document.getElementById("timer__minutes").innerHTML = minutes;
     document.getElementById("timer__seconds").innerHTML = seconds;
-
 }
