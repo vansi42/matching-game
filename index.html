@@ -13,9 +13,14 @@
         <div id="memoryGame">            
             <div id="menu">
                 <div class="movesWrapper">Moves: <span id="moves">0</span></div>
-                <button onclick="reset();">
-                    <img class="reset" src="./images/undo.png">
-                </button>
+                <div id="timer">
+                    <span id="timer__minutes">00</span>:<span id="timer__seconds">00</span>
+                </div>
+                <div class="resetWrapper">
+                    <button onclick="reset();">
+                        <img class="reset" src="./images/undo.png">
+                    </button>
+                </div>
             </div>
             <div id="board"></div>            
         </div>

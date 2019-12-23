@@ -5,6 +5,7 @@ var cardChosen = "";
 var testPair = [0,0];
 var lock = false;
 var totalMoves = 0;
+var timer = 0;
 
 // init():
 // - prepare the board
@@ -45,13 +46,16 @@ var reset = function () {
         
     totalMoves = 0;
     document.getElementById("moves").innerHTML = 0;
+    document.getElementById("timer__minutes").innerHTML = "00";
+    document.getElementById("timer__seconds").innerHTML = "00";
+
     totalCardsFlipped = 0;
     
     for (let i=0; i<totalCards; i++) {
         document.getElementById("image-" + i).setAttribute("src", "./images/"+ allCards[i] +".png");
-    }
-    
-
+    }    
+    clearInterval(timer);
+    timer = 0;
     lock = false;
 }
 
@@ -103,6 +107,9 @@ var markCard = function (el) {
             }
         }    
     }
+    if (timer == 0) {
+        timer = setInterval(function(){ setTime(); }, 1000);
+    }
 }
 
 // scrambleArray(arr):
@@ -134,3 +141,22 @@ var scrambledArray = function (arr) {
     init();  
 });
 */
+
+var setTime = function () {
+    let minutes = parseInt(document.getElementById("timer__minutes").innerHTML, 10);
+    let seconds = parseInt(document.getElementById("timer__seconds").innerHTML, 10);
+    seconds++;
+
+    if (seconds < 10) {
+        seconds = "0"+seconds;
+    } else if (seconds == 60) {
+        seconds = "00";
+        minutes++;
+    }
+    if (minutes < 10) {
+        minutes = "0"+minutes;
+    }
+    document.getElementById("timer__minutes").innerHTML = minutes;
+    document.getElementById("timer__seconds").innerHTML = seconds;
+
+}
