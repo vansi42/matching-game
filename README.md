@@ -1,4 +1,4 @@
-# matching-game
+# Stuuuuupid Matching Game
 ## A Ren &amp; Stimpy themed matching game
 
 The classic game of matching pairs.
