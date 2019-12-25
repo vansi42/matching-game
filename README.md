@@ -9,6 +9,9 @@ Plans for the future:
 - Add a high scores table
 - Choose game level
 - Choose another theme
+- Add stars rating
+- Add test cases with Enzyme
+- Improve Accessibility
 
 <img src="https://66.media.tumblr.com/200de9c80bb87722c4985b12199d255a/tumblr_omtu73ejsu1r9c63ao1_400.gifv">
 
