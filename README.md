@@ -1,9 +1,9 @@
-# Stuuuuupid Matching Game
+# Eeediot Matching Game
 ## A Ren &amp; Stimpy themed matching game
 
 The classic game of matching pairs.
 
-play it here!: https://stuuuuupid-match.herokuapp.com/
+play it here!: https://eeediot-match.herokuapp.com/
 
 Plans for the future:
 - Add a high scores table
