@@ -49,10 +49,16 @@ var reset = function () {
     document.getElementById("timer__seconds").innerHTML = "00";
 
     totalCardsFlipped = 0;
-    
+
+    document.getElementById("board").style.display = "none";
     for (let i=0; i<totalCards; i++) {
         document.getElementById("image-" + i).setAttribute("src", "./images/"+ allCards[i] +".png");
     }    
+
+    setTimeout(function () {
+        document.getElementById("board").style.display = "flex";
+    }, 1000);
+
     clearInterval(timer);
     timer = 0;
     setTimeout(function () {document.getElementById("hooray").setAttribute("isHidden", "true");}, 1000);

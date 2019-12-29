@@ -29,6 +29,7 @@ h1 {
     flex-wrap: wrap;
     width: 100%;
     height: calc(100% - 8rem);
+    transition: transform 1s ease-in-out;
 }
 
 .memoryCard {
