@@ -1,8 +1,7 @@
 const totalCards = 16;
 var totalCardsFlipped = 0;
 var allCards = [];
-var cardChosen = "";
-var testPair = [0,0];
+var testPair = ["", ""];
 var lock = false;
 var totalMoves = 0;
 var timer = 0;
@@ -24,7 +23,7 @@ var init = function () {
 
 // reset():
 // - scramble the cards
-// - flip them all
+// - flip them all back
 // - reset moves, timer, pair counter
 var reset = function () {
     lock = true;
@@ -56,23 +55,23 @@ var reset = function () {
     }    
     clearInterval(timer);
     timer = 0;
-    document.getElementById("hooray").setAttribute("isHidden", "true");
+    setTimeout(function () {document.getElementById("hooray").setAttribute("isHidden", "true");}, 1000);
 
     lock = false;
 }
 
 // flipCards(el):
-// After choosing a pair, flip them to reveal the images
-var flipCards = function (el) {
-        lock = true;
+// Flip card to reveal the image. If it's the second card - check if it's a pair.
+var flipCard = function (el) {
+    lock = true;
+    el.setAttribute("flipped", "true");
+    if (testPair[1] != "") {
         totalMoves += 1;
         document.getElementById("moves").innerHTML = totalMoves;
-        el.setAttribute("flipped", "true");
-        document.getElementById("card-"+cardChosen).setAttribute("flipped", "true");
-        testPair[0] = el.getAttribute("id").split("-")[1];
-        testPair[1] = cardChosen;
-        cardChosen = "";  
-        setTimeout(function () {checkIfPair(); lock = false;}, 2000);
+        setTimeout(function () {checkIfPair(); lock = false;}, 1500);
+    } else {
+        setTimeout(function () {lock = false;}, 500);
+    }
 };
 
 // checkIfPair():
@@ -91,8 +90,7 @@ var checkIfPair = function() {
         document.getElementById("card-"+testPair[1]).setAttribute("chosen", "false");
         document.getElementById("card-"+testPair[1]).setAttribute("flipped", "false");
     }
-    testPair = [0,0];
-    cardChosen = "";    
+    testPair = ["",""];    
 }
 
 
@@ -102,11 +100,12 @@ var markCard = function (el) {
     if (!lock) {
         if (el.getAttribute("chosen") == "false") {
             el.setAttribute("chosen", "true");
-            if (cardChosen != "") {
-                flipCards(el);
+            if (testPair[0] != "") {
+                testPair[1] = el.getAttribute("id").split("-")[1];
             } else {
-                cardChosen = el.getAttribute("id").split("-")[1];
+                testPair[0] = el.getAttribute("id").split("-")[1];
             }
+            flipCard(el);
         }    
     }
     if (timer == 0) {
@@ -138,12 +137,9 @@ var scrambledArray = function (arr) {
     }
     return res;
 }
- 
-/*document.addEventListener('DOMContentLoaded', function(event) {
-    init();  
-});
-*/
 
+// setTime():
+// advancing the timer, keep leading 0's
 var setTime = function () {
     let minutes = parseInt(document.getElementById("timer__minutes").innerHTML, 10);
     let seconds = parseInt(document.getElementById("timer__seconds").innerHTML, 10);
