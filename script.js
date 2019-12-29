@@ -1,17 +1,17 @@
 const totalCards = 16;
-var totalCardsFlipped = 0;
-var allCards = [];
-var testPair = ["", ""];
-var lock = false;
-var totalMoves = 0;
-var timer = 0;
+let totalCardsFlipped = 0;
+let allCards = [];
+let testPair = ["", ""];
+let lock = false;
+let totalMoves = 0;
+let timer = 0;
 
 // init():
 // - prepare the board
 // - create <totalCards> cards
-var init = function () {
-    var cardHtml = "";
-    for (var i=0; i<totalCards; i++) {
+let init = function () {
+    let cardHtml = "";
+    for (let i=0; i<totalCards; i++) {
         cardHtml = '<div class="memoryCard" onclick="markCard(this);" id="card-'+ i +'"  chosen="false">';
         cardHtml += '<div class="back"></div> <div class="front">';
         cardHtml += '<img id="image-'+ i +'"></div></div>';
@@ -25,10 +25,9 @@ var init = function () {
 // - scramble the cards
 // - flip them all back
 // - reset moves, timer, pair counter
-var reset = function () {
+let reset = function () {
     lock = true;
     allCards = [];
-    var temp = 0;
 
     for (let i=0; i<totalCards/2; i++) {
         allCards[2*i] = i;
@@ -37,7 +36,7 @@ var reset = function () {
     
     allCards = scrambledArray(allCards);
     
-    for (var i=0; i<totalCards; i++) {
+    for (let i=0; i<totalCards; i++) {
         document.getElementById("card-"+i).setAttribute("chosen", "false");
         document.getElementById("card-"+i).setAttribute("flipped", "false");
         document.getElementById("card-"+i).setAttribute("success", "false");
@@ -68,7 +67,7 @@ var reset = function () {
 
 // flipCards(el):
 // Flip card to reveal the image. If it's the second card - check if it's a pair.
-var flipCard = function (el) {
+let flipCard = function (el) {
     lock = true;
     el.setAttribute("flipped", "true");
     if (testPair[1] != "") {
@@ -82,7 +81,7 @@ var flipCard = function (el) {
 
 // checkIfPair():
 // Check if the pair flipped is a match
-var checkIfPair = function() {
+let checkIfPair = function() {
     if (allCards[testPair[0]] == allCards[testPair[1]]) {
         document.getElementById("card-"+testPair[0]).setAttribute("success", "true");
         document.getElementById("card-"+testPair[1]).setAttribute("success", "true");
@@ -102,7 +101,7 @@ var checkIfPair = function() {
 
 // markCard(el):
 // Make a card shiny for everyone to see
-var markCard = function (el) {
+let markCard = function (el) {
     if (!lock) {
         if (el.getAttribute("chosen") == "false") {
             el.setAttribute("chosen", "true");
@@ -121,11 +120,11 @@ var markCard = function (el) {
 
 // scrambleArray(arr):
 // Helping function for scrambling the cards array and the images array
-var scrambledArray = function (arr) {
-    var res = [];
-    var totalMixed = 0;
-    var len = arr.length;
-    var rand = -1;
+let scrambledArray = function (arr) {
+    let res = [];
+    let totalMixed = 0;
+    const len = arr.length;
+    let rand = -1;
 
     while (totalMixed < len) {
         rand = Math.floor(Math.random()*len);
@@ -146,7 +145,7 @@ var scrambledArray = function (arr) {
 
 // setTime():
 // advancing the timer, keep leading 0's
-var setTime = function () {
+let setTime = function () {
     let minutes = parseInt(document.getElementById("timer__minutes").innerHTML, 10);
     let seconds = parseInt(document.getElementById("timer__seconds").innerHTML, 10);
     seconds++;
